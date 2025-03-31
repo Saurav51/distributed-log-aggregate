@@ -19,7 +19,7 @@ Prerequisites: Python 3.8+
 
 ## 🎯 Architecture
 
-### Data Structure
+### 🌀 Data Structure (Efficient storage and retrieval)
 ```bash
 log_store = { "service_name": SortedList[(timestamp, message)] }
 ``` 
@@ -36,7 +36,7 @@ Terms Used:
 1. N: Number of log records for a particular service in the last 1 hour. 
 2. K: Number of records which fit in the filter of service_name, start_timestamp and end_timestamp.
 
-### Concurrency Handling & Thread-Safe 
+### ⚡ Concurrency Handling & Thread-Safe 
 Read-Write Lock Strategy: 
 1. Read locks are shared, allowing multiple readers to query logs concurrently without blocking each other.
 
@@ -45,10 +45,10 @@ Read-Write Lock Strategy:
 3. This improves performance by allowing frequent reads while preventing race conditions during writes. 
 
 
-### Cleanup of logs > 60 mins 
+### 🌿 Cleanup of logs > 60 mins (Memory efficiency)
 A thread runs in the background which removes logs older than 1 hour every 60 seconds.
 
-### Handling Unordered Logs
+### ✈️ Handling Unordered Logs
 Since logs may arrive out of order, the SortedList data structure automatically maintains logs in sorted order by timestamp. This ensures that query results are always returned in the correct order.
 
 
